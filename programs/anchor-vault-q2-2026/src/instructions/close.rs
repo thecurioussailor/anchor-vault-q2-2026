@@ -7,8 +7,10 @@ pub struct Close<'info> {
     pub user: Signer<'info>,
 
     #[account(
+        mut,
         seeds = [b"state", user.key().as_ref()],
-        bump = vault_state.state_bump
+        bump = vault_state.state_bump,
+        close = user,
     )]
     pub vault_state: Account<'info, VaultState>,
 
@@ -41,7 +43,7 @@ impl<'info> Close<'info> {
         let cpi_ctx = CpiContext::new_with_signer( System::id(), cpi_accounts, signer_seeds);
 
         transfer(cpi_ctx, self.vault.lamports())?;
-        
+
         Ok(())
     }
 }
