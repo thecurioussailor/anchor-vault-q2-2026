@@ -64,3 +64,13 @@ anchor_vault
 ```bash
 anchor deploy
 ```
+
+## Tests
+
+### TypeScript Tests (Anchor)
+
+![TypeScript tests passing](./tests-typescript.png)
+
+### Rust Tests (LiteSVM)
+
+![Rust tests passing](./tests-rust.png)
